@@ -359,3 +359,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initialize();
 });
 
+window.addEventListener('beforeunload', (e) => {
+    // Only warn if a timer is running or water is accumulating
+    if (
+        isMainTimerRunning ||
+        (twentyRuleCheckbox && twentyRuleCheckbox.checked) ||
+        (standingDeskCheckbox && standingDeskCheckbox.checked) ||
+        (waterCheckbox && waterCheckbox.checked && waterDebt > 0)
+    ) {
+        e.preventDefault();
+        // Chrome requires returnValue to be set
+        e.returnValue = '';
+        // The actual message is ignored by most browsers, but this triggers the dialog
+    }
+});
+
