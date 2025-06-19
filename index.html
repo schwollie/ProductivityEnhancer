@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Productivity Timer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div id="permission-prompt" class="container">
+        <h2>Welcome!</h2>
+        <p>Please grant permission to show notifications and play sounds for the best experience.</p>
+        <button id="grant-permission-btn">Grant Permission</button>
+    </div>
+
+    <div id="app-container" class="container hidden">
+        <h1>Productivity Timer</h1>
+
+        <!-- Main Concentration Timer -->
+        <div class="timer-section">
+            <h2>Concentration Timer</h2>
+            <select id="timer-type">
+                <option value="none">None</option>
+                <option value="pomodoro">Pomodoro (25 min work / 5 min break)</option>
+                <option value="focus">Focus (50 min work / 10 min break)</option>
+            </select>
+            <div id="timer-display">25:00</div>
+            <button id="start-btn">Start</button>
+            <button id="reset-btn">Reset</button>
+        </div>
+
+        <!-- Background Tasks -->
+        <div class="settings-section">
+            <h2>Background Reminders</h2>
+
+            <!-- 20-20-20 Rule -->
+            <div class="setting">
+                <input type="checkbox" id="twenty-rule-checkbox">
+                <label for="twenty-rule-checkbox">Enable 20-20-20 Rule (reminds every 20 mins)</label>
+            </div>
+
+            <!-- Standing Desk -->
+            <div class="setting">
+                <input type="checkbox" id="standing-desk-checkbox">
+                <label for="standing-desk-checkbox">Enable Standing Desk Reminders</label>
+                <div id="standing-desk-inputs" class="hidden">
+                    <label>Sit (mins): <input type="number" id="sit-duration" value="50" min="1"></label>
+                    <label>Stand (mins): <input type="number" id="stand-duration" value="20" min="1"></label>
+                </div>
+            </div>
+
+            <!-- Water Reminder -->
+            <div class="setting">
+                <input type="checkbox" id="water-checkbox">
+                <label for="water-checkbox">Enable Drinking Water Hints</label>
+                <div id="water-inputs" class="hidden">
+                    <label>Water per hour (ml): <input type="number" id="water-amount" value="250" min="1"></label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testing Section -->
+        <div class="timer-section">
+            <h2>Testing</h2>
+            <p>Use these buttons to test browser/OS permissions.</p>
+            <button id="test-notification-btn">Test Notification</button>
+            <button id="test-sound-btn">Test Sound</button>
+        </div>
+    </div>
+
+    <script src="js/notifications.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>
