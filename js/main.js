@@ -360,17 +360,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('beforeunload', (e) => {
-    // Only warn if a timer is running or water is accumulating
-    if (
-        isMainTimerRunning ||
-        (twentyRuleCheckbox && twentyRuleCheckbox.checked) ||
-        (standingDeskCheckbox && standingDeskCheckbox.checked) ||
-        (waterCheckbox && waterCheckbox.checked && waterDebt > 0)
-    ) {
-        e.preventDefault();
-        // Chrome requires returnValue to be set
-        e.returnValue = '';
-        // The actual message is ignored by most browsers, but this triggers the dialog
-    }
+    // Cancel the event
+    e.preventDefault();
+
+    // Chrome requires returnValue to be set
+    e.returnValue = 'Are you sure you want to leave? Your timers are still running.';
+
+    // Modern browsers like Chrome and Firefox no longer display custom messages.
+    // However, setting returnValue is still necessary for the dialog to appear.
+    return 'Are you sure you want to leave? Your timers are still running.';
+    
 });
 
